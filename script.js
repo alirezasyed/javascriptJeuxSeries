@@ -1,39 +1,49 @@
-const coinArray = ["Heads", "Tails"];
+/****************************
+ * Jeu de pile ou face
+ ****************************/
 
-const score = [0,0];
+// const coinArray = ["Heads", "Tails"];
 
-const message = document.querySelector('.message');
+// const score = [0,0];
 
-const buttons = document.querySelectorAll("button");
+// const message = document.querySelector('.message');
 
-// console.log(buttons);
+// const buttons = document.querySelectorAll("button");
 
-for(let i = 0; i < buttons.length; i++)
-{
-    console.log(buttons[i]);
-    buttons[i].addEventListener("click", tossCoin);
-}
+// // console.log(buttons);
 
-function tossCoin(e)
-{
-    let playerGuess = e.target.innerText;
-    // console.log("joueur: " + e.target.innerText);
-    let computerToss = Math.floor(Math.random() * 2);
-    // console.log("ordinateur: " + coinArray[computerToss]);
-    let computerGuess = coinArray[computerToss];
-    message.innerHTML = "l'ordinateur a selectionne " + computerGuess;
+// for(let i = 0; i < buttons.length; i++)
+// {
+//     console.log(buttons[i]);
+//     buttons[i].addEventListener("click", tossCoin);
+// }
 
-    let outPut;
+// function tossCoin(e)
+// {
+//     let playerGuess = e.target.innerText;
+//     // console.log("joueur: " + e.target.innerText);
+//     let computerToss = Math.floor(Math.random() * 2);
+//     // console.log("ordinateur: " + coinArray[computerToss]);
+//     let computerGuess = coinArray[computerToss];
+//     message.innerHTML = "l'ordinateur a selectionne " + computerGuess;
 
-    if(playerGuess === computerGuess)
-    {
-        outPut = " Le joueur gagne .";
-        score[0]++;
-    }
-    else
-    {
-        outPut = " L'ordinateur gagne .";
-        score[1]++;
-    }
-    message.innerHTML+= outPut + "<br /> Joueur : " + score[0] + " L'ordinateur : " + score[1];
-}
+//     let outPut;
+
+//     if(playerGuess === computerGuess)
+//     {
+//         outPut = " Le joueur gagne .";
+//         score[0]++;
+//     }
+//     else
+//     {
+//         outPut = " L'ordinateur gagne .";
+//         score[1]++;
+//     }
+//     message.innerHTML+= outPut + "<br /> Joueur : " + score[0] + " L'ordinateur : " + score[1];
+// }
+
+
+
+/****************************
+ * Petit projet de demander et obtenir des réponses
+ ****************************/
