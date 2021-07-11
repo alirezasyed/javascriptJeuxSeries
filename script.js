@@ -43,7 +43,57 @@
 // }
 
 
-
 /****************************
  * Petit projet de demander et obtenir des réponses
  ****************************/
+
+// const answerArray = ["It will work", "Maybe maybe not", "Probably Not", "I Dont Now"];
+
+// const message = document.querySelector(".message");
+// const question = document.querySelector("input");
+// const button = document.querySelector("button");
+
+// button.addEventListener("click", function () {
+
+//     let res = Math.floor(Math.random() * answerArray.length);
+//     message.innerText = question.value + " " + answerArray[res];
+//     question.value = "";
+
+// });
+
+
+
+/****************************
+ * Jeux de deviner des nombres
+ ****************************/
+
+ const gameArea = document.querySelector(".game");
+ const button = document.querySelector("button");
+
+ let gamePlay = false;
+ button.addEventListener("click", function () {
+     if (!gamePlay) {
+         gamePlay = true;
+         maker();
+         button.innerHTML = "Check Combo";
+     } else {
+         console.log("Checker");
+     }
+ });
+
+ function maker() {
+     for (let x = 0; x < 6; x++) {
+         let el = document.createElement("input");
+         el.setAttribute("type", "number");
+         el.max = 9;
+         el.min = 0;
+         el.size = 1;
+         el.style.width = "50px";
+         el.classList.add("numb");
+         el.value = 0;
+         el.order = x;
+         console.log(el);
+         gameArea.appendChild(el);
+     }
+
+ }
