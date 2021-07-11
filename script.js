@@ -77,7 +77,26 @@
          maker();
          button.innerHTML = "Check Combo";
      } else {
-         console.log("Checker");
+        //  console.log("Checker");
+
+        const numbers = document.querySelectorAll(".numb");
+        //console.log(numbers);
+
+        for(let i=0; i<numbers.length;i++)
+        {
+            //console.log(numbers[i].value);
+           // console.log(numbers[i].correct);
+            if(numbers[i].value == numbers[i].correct)
+            {
+                console.log("Match");
+                
+            }else{
+                console.log("No Match");
+                
+            }
+            
+        }
+        
      }
  });
 
@@ -90,9 +109,10 @@
          el.size = 1;
          el.style.width = "50px";
          el.classList.add("numb");
-         el.value = 0;
+         el.correct = Math.floor(Math.random() * 10);
+         el.value = el.correct;
          el.order = x;
-         console.log(el);
+        //  console.log(el);
          gameArea.appendChild(el);
      }
 
