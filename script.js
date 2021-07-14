@@ -47,7 +47,7 @@
  * Petit projet de demander et obtenir des réponses
  ****************************/
 
-// const answerArray = ["It will work", "Maybe maybe not", "Probably Not", "I Dont Now"];
+// const answerArray = ["It will work", "Maybe maybe not", "Probably Not", "I Dont know"];
 
 // const message = document.querySelector(".message");
 // const question = document.querySelector("input");
@@ -62,58 +62,71 @@
 // });
 
 
-
 /****************************
  * Jeux de deviner des nombres
  ****************************/
 
- const gameArea = document.querySelector(".game");
- const button = document.querySelector("button");
+const gameArea = document.querySelector(".game");
+const button = document.querySelector("button");
+const message = document.querySelector(".message");
 
- let gamePlay = false;
- button.addEventListener("click", function () {
-     if (!gamePlay) {
-         gamePlay = true;
-         maker();
-         button.innerHTML = "Check Combo";
-     } else {
-        //  console.log("Checker");
+let gamePlay = false;
+let score = 0;
+button.addEventListener("click", function () {
+    if (! gamePlay) {
+        gamePlay = true;
+        score = 0;
+        maker();
+        button.innerHTML = "Check Combo";
+    } else { // console.log("Checker");
 
         const numbers = document.querySelectorAll(".numb");
-        //console.log(numbers);
+        // console.log(numbers);
+        score++;
+        message.innerHTML = "les suppositions/Guesses " + score;
+        let winCondition = 0;
+        for (let i = 0; i < numbers.length; i++) {
+            // console.log(numbers[i].value);
+            // console.log(numbers[i].correct);
+            if (numbers[i].value == numbers[i].correct) { 
+                // console.log("Match");
+                numbers[i].style.backgroundColor = "green";
+                numbers[i].style.color = "white";
+                winCondition++;
 
-        for(let i=0; i<numbers.length;i++)
-        {
-            //console.log(numbers[i].value);
-           // console.log(numbers[i].correct);
-            if(numbers[i].value == numbers[i].correct)
-            {
-                console.log("Match");
-                
-            }else{
-                console.log("No Match");
-                
+            } else {
+                // console.log("No Match");
+                let color = (numbers[i].value < numbers[i].correct) ? "blue" : "red";
+                numbers[i].style.backgroundColor = color;
+                numbers[i].style.color = "black";
             }
             
+            if(winCondition == numbers.length)
+                {
+                    console.log("Game Over");
+                    
+                }
+
+
         }
-        
-     }
- });
 
- function maker() {
-     for (let x = 0; x < 6; x++) {
-         let el = document.createElement("input");
-         el.setAttribute("type", "number");
-         el.max = 9;
-         el.min = 0;
-         el.size = 1;
-         el.style.width = "50px";
-         el.classList.add("numb");
-         el.correct = Math.floor(Math.random() * 10);
-         el.value = el.correct;
-         el.order = x;
-        //  console.log(el);
-         gameArea.appendChild(el);
-     }
+    }
+});
 
- }
+function maker() {
+    for (let x = 0; x < 6; x++) {
+        let el = document.createElement("input");
+        el.setAttribute("type", "number");
+        el.max = 9;
+        el.min = 0;
+        el.size = 1;
+        el.style.width = "50px";
+        el.classList.add("numb");
+        el.correct = Math.floor(Math.random() * 10);
+        el.value = 0;
+        el.order = x;
+        // console.log(el);
+        gameArea.appendChild(el);
+    }
+
+}
