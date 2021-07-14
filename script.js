@@ -75,9 +75,11 @@ let score = 0;
 button.addEventListener("click", function () {
     if (! gamePlay) {
         gamePlay = true;
+        gameArea.innerHTML = "";
         score = 0;
-        maker();
+        maker(5);
         button.innerHTML = "Check Combo";
+        message.innerHTML="Guess The Combo"
     } else { // console.log("Checker");
 
         const numbers = document.querySelectorAll(".numb");
@@ -88,24 +90,21 @@ button.addEventListener("click", function () {
         for (let i = 0; i < numbers.length; i++) {
             // console.log(numbers[i].value);
             // console.log(numbers[i].correct);
-            if (numbers[i].value == numbers[i].correct) { 
-                // console.log("Match");
+            if (numbers[i].value == numbers[i].correct) { // console.log("Match");
                 numbers[i].style.backgroundColor = "green";
                 numbers[i].style.color = "white";
                 winCondition++;
 
-            } else {
-                // console.log("No Match");
+            } else { // console.log("No Match");
                 let color = (numbers[i].value < numbers[i].correct) ? "blue" : "red";
                 numbers[i].style.backgroundColor = color;
                 numbers[i].style.color = "black";
             }
-            
-            if(winCondition == numbers.length)
-                {
-                    console.log("Game Over");
-                    
-                }
+
+            if (winCondition == numbers.length) { // console.log("Game Over");
+                gameEnd();
+
+            }
 
 
         }
@@ -113,8 +112,14 @@ button.addEventListener("click", function () {
     }
 });
 
-function maker() {
-    for (let x = 0; x < 6; x++) {
+function gameEnd() {
+    message.innerHTML = "You Solved the Combo in " + score + " Guesses";
+    gamePlay = false;
+    button.innerHTML = "Restart Game";
+}
+
+function maker(numb) {
+    for (let x = 0; x < numb; x++) {
         let el = document.createElement("input");
         el.setAttribute("type", "number");
         el.max = 9;
@@ -123,7 +128,7 @@ function maker() {
         el.style.width = "50px";
         el.classList.add("numb");
         el.correct = Math.floor(Math.random() * 10);
-        el.value = 0;
+        el.value = el.correct;
         el.order = x;
         // console.log(el);
         gameArea.appendChild(el);
