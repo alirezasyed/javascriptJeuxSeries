@@ -1,3 +1,7 @@
 .numb {
     font-size: 2em;
 }
+
+.hidden {
+    display: none;
+}
