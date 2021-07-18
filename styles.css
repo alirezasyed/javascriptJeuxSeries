@@ -5,3 +5,28 @@
 .hidden {
     display: none;
 }
+
+/* ==================== la minuterie ====================  */
+.clock{
+    background-color: blue;
+    width: 400px;
+    text-align: center;
+    font-size: 1em;
+    color: white;
+}
+.clock > span{
+    padding: 10px;
+    border-radius: 10px;
+    background-color: black;
+}
+.clock > span > span{
+    padding: 5px;
+    border-radius: 10px;
+    background-color: red;
+    margin-right: 2px;
+}
+input{
+    padding: 15px;
+    margin: 20px;
+    font-size: 1.5em;
+}
